@@ -48,7 +48,8 @@ We will use the **MVC architecture**:
 ---
 
 ## UML Diagram
-We created a detailed UML diagram in `DesignDocuments/PetInventoryUML.md` that reflects the complete class structure, fields, and methods. It includes all planned functionality and follows the MVC structure.
+
+We created a detailed UML diagram stored at [UML.md](../DesignDocuments/UML.md) that reflects the complete class structure, fields, and methods. It includes all planned functionality and follows the MVC structure.
 
 ---
 
