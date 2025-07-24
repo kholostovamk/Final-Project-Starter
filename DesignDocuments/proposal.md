@@ -9,6 +9,7 @@ We are building a **Pet Inventory** application using Java and the MVC design pa
 - See all available pets
 - View pet details
 - Save filtered list of pets as CSV or JSON
+- Graphical user interface
 
 ---
 
