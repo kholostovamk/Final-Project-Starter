@@ -78,7 +78,7 @@ We have 3 team members. Each person is assigned one area of responsibility to en
 
 ### Wen – **Data & Features Developer**
 
-	•	Build the FileHandler class to handle saving/loading pets to/from CSV and JSON formats
+	•	Build the FileHandler class to handle saving/loading pets to/from JSON formats
 	•	Ensure file operations support both the full inventory and the desired pet list
 	•	Implement the SearchFilter class with filtering logic (by age, breed, gender, weight) and name-based searching
 	•	Enable searching within filtered results as a stretch goal

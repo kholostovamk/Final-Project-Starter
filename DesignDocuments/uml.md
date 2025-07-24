@@ -84,8 +84,6 @@ classDiagram
     }
 
     class FileHandler {
-        +saveInventoryToCSV(pets: List<Pet>, filename: String): void
-        +loadInventoryFromCSV(filename: String): List<Pet>
         +saveInventoryToJSON(pets: List<Pet>, filename: String): void
         +loadInventoryFromJSON(filename: String): List<Pet>
         +saveDesiredList(DesiredPetList, filename: String): void
