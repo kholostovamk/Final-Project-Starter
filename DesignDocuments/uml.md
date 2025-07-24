@@ -58,16 +58,21 @@ classDiagram
     class Inventory {
         -pets: List<Pet>
         +addPet(p: Pet): void
-        +removePet(p: Pet): void
+        +removePetById(id: String): void
         +getAllPets(): List<Pet>
         +sortPetsBy(field: String): List<Pet>
+        +saveToCSV(filename: String): void
+        +saveToJSON(filename: String): void
+        +loadFromCSV(filename: String): void
+        +loadFromJSON(filename: String): void
     }
 
     class DesiredPetList {
         -selectedPets: List<Pet>
         +add(Pet): void
-        +remove(Pet): void
+        +removeById(id: String): void
         +getList(): List<Pet>
+        +clear(): void
     }
 
     class SearchFilter {
@@ -79,12 +84,12 @@ classDiagram
     }
 
     class FileHandler {
-        +saveToCSV(pets: List<Pet>, filename: String): void
-        +loadFromCSV(filename: String): List<Pet>
-        +saveToJSON(pets: List<Pet>, filename: String): void
-        +loadFromJSON(filename: String): List<Pet>
-        +saveDesiredList(DesiredPetList, String): void
-        +loadDesiredList(String): DesiredPetList
+        +saveInventoryToCSV(pets: List<Pet>, filename: String): void
+        +loadInventoryFromCSV(filename: String): List<Pet>
+        +saveInventoryToJSON(pets: List<Pet>, filename: String): void
+        +loadInventoryFromJSON(filename: String): List<Pet>
+        +saveDesiredList(DesiredPetList, filename: String): void
+        +loadDesiredList(filename: String): DesiredPetList
     }
 
     class PetInventoryApp {

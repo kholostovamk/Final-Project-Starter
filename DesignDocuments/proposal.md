@@ -8,7 +8,7 @@ We are building a **Pet Inventory** application using Java and the MVC design pa
 ## What are the initial features for the application?
 - See all available pets
 - View pet details
-- Save the list of pets as CSV or JSON
+- Save filtered list of pets as CSV or JSON
 
 ---
 
