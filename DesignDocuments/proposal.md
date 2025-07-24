@@ -35,8 +35,8 @@ We will use the **MVC architecture**:
 - `Pet` (abstract), `Dog`, `Cat`
 - `Inventory` (manages all pets)
 - `DesiredPetList` (manages selected pets)
-- `SearchFilter` (logic for searching and filtering)
-- `FileHandler` (loads/saves pets from/to JSON or CSV)
+- `SortFilter` - sorting logic
+
 
 ### View:
 - `MainFrame` (main window)
@@ -44,6 +44,8 @@ We will use the **MVC architecture**:
 
 ### Controller (lightweight):
 - `PetInventoryApp` (main entry point, sets up app)
+- `FileHandler` (loads/saves pets from/to JSON)
+- `SearchFilter` (logic for searching and filtering)
 
 ---
 
@@ -76,7 +78,7 @@ We have 3 team members. Each person is assigned one area of responsibility to en
 	•	Validate pet data before adding to lists (e.g., no negative ages or weights)
 	•	Ensure the model is testable and functions independently of the UI
 
-### Wen – **Data & Features Developer**
+### Wen – **Controller Developer**
 
 	•	Build the FileHandler class to handle saving/loading pets to/from JSON formats
 	•	Ensure file operations support both the full inventory and the desired pet list
@@ -96,13 +98,15 @@ We have 3 team members. Each person is assigned one area of responsibility to en
 
 ## Timeline and Checkpoints
 
-| Week     | Tasks                                                                                                                                                          |
-|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Week 1** | Finalize project idea, responsibilities, and UML diagram. Set up GitHub repo with folders for `model`, `view`, `controller`, `docs`, and `tests`. Each team member creates their working branch. DONE|
-| **Week 2** | Begin feature development in separate branches:  <br>• Model Developer: Implement `Pet`, `Dog`, `Cat`, `Inventory`, and `DesiredPetList` using mock data  <br>• Data & Features Developer: Build `SearchFilter` and begin `FileHandler` with dummy data  <br>• UI Designer: Create GUI structure with placeholder panels. WE ARE HERE|
-| **Week 3** | Integrate model, logic, and GUI:  <br>• Wire up UI actions to logic (e.g., search, add/remove pets)  <br>• Connect file operations (save/load)  <br>• Perform unit tests for each module and resolve bugs  <br>• Stretch goals (e.g., delete from desired list, search in filtered view). |
-| **Week 4** | Final testing and polish:  <br>• Complete error handling and edge cases  <br>• Finalize all documentation: user manual, Javadoc, README  <br>• Dry run of live demo and UI refinements. |
-| **Week 5** | Submit final version of the project  <br>• Record or conduct live demo  <br>• Each member completes an individual retrospective and feedback report. |
+## 📅 Detailed Timeline by Role
+
+| **Week**   | **GUI (Person A)**                                                                                                                                       | **Model (Person B)**                                                                                                                                                                 | **Data/File (Person C)**                                                                                                                                                    |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Week 1** | ✅ Set up `ui-design` branch <br> ✅ Help finalize UML for GUI-related classes <br> ✅ Review planned panel components (PetList, Filter, Search, Detail) | ✅ Set up `inventory-model` branch <br> ✅ Finalize class structure for `Pet`, `Dog`, `Cat`, `Inventory`, `DesiredPetList` in UML <br> ✅ Plan how to generate and manage unique IDs | ✅ Set up `file-search` branch <br> ✅ Outline method signatures for `FileHandler` and `SearchFilter` <br> ✅ Review JSON/CSV format needed for file I/O                     |
+| **Week 2** | 🔧 Create layout for `MainFrame` using placeholder panels <br> 🔧 Build `PetListPanel`, `FilterPanel`, `SearchPanel`, `PetDetailPanel` with dummy labels <br> 🧪 Load and display mock pet list in UI | 🧱 Implement base classes: `Pet`, `Dog`, `Cat` with sample attributes and methods <br> 🧱 Build `Inventory` and `DesiredPetList` with `add`, `remove`, `getAll` <br> 🧪 Fill with mock pets | 🧪 Create initial version of `SearchFilter` with methods for filtering by age, breed, gender, weight <br> 🧱 Start `FileHandler` with stub methods for load/save in CSV and JSON |
+| **Week 3** | 🔌 Connect UI buttons to logic: search, filter, add to desired list <br> 🔍 Implement pet detail view (click → display info) <br> 💾 Add Save/Load button placeholders | 🔄 Add sorting methods in `Inventory` (by name, age, breed, weight) <br> 🧹 Implement `removeById()` in both lists <br> 🧪 Handle edge cases (empty list, invalid ID) | 💾 Complete file save/load methods in `FileHandler` for both lists <br> 🔍 Implement `searchByName` method <br> 🧪 Test search + filters with real model data                 |
+| **Week 4** | 🧼 Finalize button interactions: Add/Remove from desired list, Save/Load pets <br> 🎨 Clean up panel layout and improve spacing/labels <br> 🧪 Manual UI testing | ✅ Write JUnit tests for `Inventory`, `DesiredPetList`, `Pet` subclasses <br> 🛡️ Add validation: no negative age/weight, unique ID checks <br> 📚 Add JavaDoc for all model classes | ⚠️ Handle file errors (e.g., invalid file format, missing fields) using try/catch <br> ✅ Add unit tests for `FileHandler` and `SearchFilter` <br> 📚 JavaDoc for utility classes |
+| **Week 5** | 🎥 Help prepare and record demo (walk through UI flow) <br> 🧪 Final UI polish and responsiveness checks <br> 📦 Submit final version | 🔀 Merge model code to `main` with all tests passing <br> 🧾 Help complete final README, manual, and model documentation <br> 🧠 Write individual retrospective | ✅ Final test run for all features <br> 📄 Contribute to README and user guide <br> 🧠 Submit individual reflection with insights on filtering/file-handling logic             |
 
 ---
 
