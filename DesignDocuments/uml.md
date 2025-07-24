@@ -120,3 +120,7 @@ classDiagram
     class SearchPanel {
         +getSearchQuery(): String
     }
+
+    class Add{
+        + ADD()
+    }
