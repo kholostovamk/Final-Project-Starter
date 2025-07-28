@@ -1,13 +1,35 @@
 package model;
+
+/**
+ * Class for Dogs. Extends abstract class of Pet with addition of information about being trained.
+ */
 public class Dog extends AbstractPet{
 
-    private boolean isTrained;
+    /**
+     * Indicates whether the dog is trained.
+     */
+    private final boolean isTrained;
 
-    public Dog(String id, String name, int age, String breed, double weight, char gender, boolean isTrained) {
+    /**
+     * Constructs a Dog instance with the provided attributes.
+     * @param id unique identifier for the pet
+     * @param name name of the dog
+     * @param age numerical age (used to determine puppy, young, adult, senior group)
+     * @param breed breed of the dog
+     * @param weight weight in pounds (used for size categorization)
+     * @param gender 'F' or 'M'
+     * @param isTrained true if the dog is trained, false otherwise
+     */
+    public Dog(String id, String name, int age, String breed, double weight, 
+    char gender, boolean isTrained) {
         super(id, name, age, breed, weight, gender);
         this.isTrained = isTrained;
     }
 
+    /**
+     * Returns training status for the dog.
+     * @return true if it's trained, false if it is not
+     */
     public boolean isTrained() {
         return isTrained;
     }
