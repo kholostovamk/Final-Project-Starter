@@ -34,11 +34,21 @@ public class Dog extends AbstractPet{
         return isTrained;
     }
 
+     /**
+     * Returns a string representing the dog's train status for display.
+     * 
+     * @return "Trained" if true, otherwise "Not Trained"
+     */
     @Override
     public String getSpecialInfo() {
     return isTrained ? "Trained" : "Not trained";
     }
 
+    /**
+     * Determines the dog's weight category based on weight in pounds.
+     * 
+     * @return "Small", "Medium", "Large", or "Giant" based on the weight
+     */
     @Override
     public String getWeightCategory() {
         double weight = this.getWeight();
