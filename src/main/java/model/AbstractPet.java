@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.AgeGroup;
+import model.enums.WeightCategory;
+
 /**
  * Abstract base class representing a general pet with common attributes.
  */
@@ -94,9 +97,16 @@ public abstract class AbstractPet {
     /**
      * Abstract method that returns the weight category for the pet.
      *
-     * @return a string representing the pet's weight category (e.g., Small, Medium)
+     * @return enum for the pet's weight category (e.g., Small, Medium)
      */
-    public abstract String getWeightCategory();
+    public abstract WeightCategory getWeightCategory();
+
+    /**
+     * Abstract method that returns age group category specific to the pet type.
+     * 
+     * @return enum for pet's age category
+     */
+    public abstract AgeGroup getAgeGroup();
 
     /**
      * Returns a string representation of the pet including its basic attributes.

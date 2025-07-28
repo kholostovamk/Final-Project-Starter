@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.AgeGroup;
+import model.enums.WeightCategory;
+
 /**
  * Represents a Cat, extending the abstract pet class with an additional field 
  * indicating whether the cat is indoor-only.
@@ -52,11 +55,12 @@ public class Cat extends AbstractPet {
      * @return "Small", "Medium", "Large", or "Giant" based on the weight
      */
     @Override
-    public String getWeightCategory() {
-        double weight = this.getWeight();
-        if (weight <= 8) return "Small";
-        else if (weight <= 12) return "Medium";
-        else if (weight <= 16) return "Large";
-        else return "Giant";
+    public WeightCategory getWeightCategory() {
+        return WeightCategory.fromCatWeight(this.getWeight());
+}
+
+    @Override
+    public AgeGroup getAgeGroup() {
+        return AgeGroup.fromCatAge(this.getAge());
     }
 }
