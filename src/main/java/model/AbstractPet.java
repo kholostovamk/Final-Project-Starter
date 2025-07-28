@@ -1,5 +1,5 @@
 package model;
-public abstract class Pet {
+public abstract class AbstractPet {
     private final String id;
     private final String name;
     private final int age;
@@ -8,7 +8,7 @@ public abstract class Pet {
     private final char gender;
     
     
-    public Pet(String id, String name, int age, String breed, double weight, char gender) {
+    public AbstractPet(String id, String name, int age, String breed, double weight, char gender) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -44,8 +44,10 @@ public abstract class Pet {
     }
 
     
-    // Abstract method to be implemented by subclasses
+    // Abstract methods to be implemented by subclasses
     public abstract String getSpecialInfo();
+
+    public abstract String getWeightCategory();
     
       @Override
     public String toString() {
