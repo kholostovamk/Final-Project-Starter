@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.AgeGroup;
+import model.enums.WeightCategory;
+
 /**
  * Class for Dogs. Extends abstract class of Pet with addition of information about being trained.
  */
@@ -47,15 +50,21 @@ public class Dog extends AbstractPet{
     /**
      * Determines the dog's weight category based on weight in pounds.
      * 
-     * @return "Small", "Medium", "Large", or "Giant" based on the weight
+     * @return "SMALL", "MEDIUM", "LARGE", or GIANT" based on the weight
      */
     @Override
-    public String getWeightCategory() {
-        double weight = this.getWeight();
-        if (weight <= 25) return "Small";
-        else if (weight <= 50) return "Medium";
-        else if (weight <= 100) return "Large";
-        else return "Giant";
+    public WeightCategory getWeightCategory() {
+        return WeightCategory.fromDogWeight(this.getWeight());
+    }
+
+    /**
+     * Determines the dog's age category based on age value.
+     * 
+     * @return "PUPPY", "YOUNG", "ADULT", "SENIOR"
+     */
+    @Override
+    public AgeGroup getAgeGroup() {
+        return AgeGroup.fromDogAge(this.getAge());
     }
     
 }
