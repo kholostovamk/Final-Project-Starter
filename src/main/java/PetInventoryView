@@ -1,0 +1,288 @@
+package org.example;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
+
+public class PetInventoryView {
+    public static void main(String[] args) {
+
+        // Frame
+        JFrame frame = new JFrame("Pet Inventory");
+        frame.setSize(1200, 700);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(new BorderLayout());
+
+        // Top Panel
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(new Color(240, 248, 255));
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // border for panel
+        // Title of Program
+        JLabel title = new JLabel("Pet Inventory");
+        title.setFont(new Font("SansSerif", Font.BOLD, 32));
+        title.setForeground(new Color(30, 144, 255));
+        topPanel.add(title, BorderLayout.WEST);
+
+        // Container panel to hold search panel and match center panel's layout
+        JPanel searchContainer = new JPanel(new BorderLayout());
+        searchContainer.setBackground(new Color(240, 248, 255));
+        // Search panel to go in search container
+        JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        searchPanel.setBackground(new Color(240, 248, 255));
+        searchPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0)); // create empty space at the top to lower my search box
+        // Search text field
+        JTextField textField = new JTextField();
+        textField.setPreferredSize(new Dimension(200, 30));
+        // Button for search text field
+        JButton searchButton = new JButton("\uD83D\uDD0D");
+        searchButton.setPreferredSize(new Dimension(30, 23));
+        searchButton.addActionListener(e -> {System.out.println("Clicked button");});
+        // Add searchButton and textField to searchPanel
+        searchPanel.add(searchButton);
+        searchPanel.add(textField);
+        // Search panel to the center of the search container
+        searchContainer.add(searchPanel, BorderLayout.CENTER);
+        // Spacer panel on the right with the same width as the right panel
+        JPanel spacer = new JPanel();
+        spacer.setPreferredSize(new Dimension(310, 0));
+        spacer.setBackground(new Color(240, 248, 255));
+        searchContainer.add(spacer, BorderLayout.EAST);
+
+        topPanel.add(searchContainer, BorderLayout.CENTER);
+
+        // Center Panel
+        JPanel centerPanel = new JPanel(new BorderLayout());
+        centerPanel.setBackground(new Color(240, 248, 255));
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+        // Table data
+        String[] columns = {"Animal", "Name", "Breed", "Gender", "Age", "Weight (lbs)"};
+        String[][] data = {
+                {"\uD83D\uDC36", "Bob", "Golden Retriever", "Male", "5", "50"},
+                {"\uD83D\uDC31", "Jessie", "Ragamuffin", "Female", "2", "9"},
+                {"\uD83D\uDC36", "Max", "Labrador Retriever", "Male", "3", "65"},
+                {"\uD83D\uDC31", "Luna", "Siamese", "Female", "4", "8"},
+                {"\uD83D\uDC36", "Charlie", "French Bulldog", "Male", "2", "28"},
+                {"\uD83D\uDC31", "Bella", "Persian", "Female", "5", "12"},
+                {"\uD83D\uDC36", "Rocky", "German Shepherd", "Male", "6", "75"},
+                {"\uD83D\uDC31", "Milo", "Maine Coon", "Male", "3", "15"},
+                {"\uD83D\uDC36", "Daisy", "Bulldog", "Female", "4", "45"},
+                {"\uD83D\uDC31", "Oliver", "Domestic Shorthair", "Male", "1", "10"},
+                {"\uD83D\uDC36", "Sadie", "Poodle", "Female", "7", "40"},
+                {"\uD83D\uDC31", "Simba", "Ragdoll", "Male", "2", "14"},
+                {"\uD83D\uDC36", "Buddy", "Beagle", "Male", "4", "25"},
+                {"\uD83D\uDC31", "Lucy", "British Shorthair", "Female", "3", "11"},
+                {"\uD83D\uDC36", "Cooper", "Siberian Husky", "Male", "2", "55"},
+                {"\uD83D\uDC31", "Chloe", "Bengal", "Female", "5", "10"},
+                {"\uD83D\uDC36", "Bear", "Rottweiler", "Male", "5", "110"},
+                {"\uD83D\uDC31", "Lily", "Scottish Fold", "Female", "2", "9"},
+                {"\uD83D\uDC36", "Duke", "Doberman", "Male", "6", "85"},
+                {"\uD83D\uDC31", "Sophie", "Sphynx", "Female", "4", "8"},
+                {"\uD83D\uDC36", "Tucker", "Boxer", "Male", "3", "70"},
+                {"\uD83D\uDC31", "Zoe", "Russian Blue", "Female", "1", "7"},
+                {"\uD83D\uDC36", "Jack", "Australian Shepherd", "Male", "4", "50"},
+                {"\uD83D\uDC31", "Mia", "Burmese", "Female", "3", "9"},
+                {"\uD83D\uDC36", "Bentley", "Great Dane", "Male", "2", "120"},
+                {"\uD83D\uDC31", "Cleo", "Abyssinian", "Female", "6", "10"},
+                {"\uD83D\uDC36", "Zeus", "Mastiff", "Male", "7", "150"},
+                {"\uD83D\uDC31", "Ruby", "Cornish Rex", "Female", "2", "8"},
+                {"\uD83D\uDC36", "Murphy", "Border Collie", "Male", "3", "40"},
+                {"\uD83D\uDC31", "Lola", "Tonkinese", "Female", "4", "9"},
+                {"\uD83D\uDC36", "Winston", "Corgi", "Male", "5", "30"},
+                {"\uD83D\uDC31", "Nala", "Birman", "Female", "1", "7"},
+                {"\uD83D\uDC36", "Oscar", "Shih Tzu", "Male", "6", "15"},
+                {"\uD83D\uDC31", "Gracie", "Himalayan", "Female", "3", "11"},
+                {"\uD83D\uDC36", "Leo", "Dalmatian", "Male", "4", "60"},
+                {"\uD83D\uDC31", "Stella", "Oriental Shorthair", "Female", "2", "8"},
+                {"\uD83D\uDC36", "Roscoe", "Basset Hound", "Male", "7", "45"},
+                {"\uD83D\uDC31", "Misty", "Norwegian Forest Cat", "Female", "5", "13"},
+                {"\uD83D\uDC36", "Gus", "Pug", "Male", "4", "20"},
+                {"\uD83D\uDC31", "Pepper", "Exotic Shorthair", "Female", "3", "10"},
+                {"\uD83D\uDC36", "Finn", "Bernese Mountain Dog", "Male", "5", "90"},
+                {"\uD83D\uDC31", "Abby", "Manx", "Female", "2", "9"},
+                {"\uD83D\uDC36", "Rusty", "Vizsla", "Male", "3", "55"},
+                {"\uD83D\uDC31", "Angel", "Balinese", "Female", "4", "8"}
+        };
+
+        // to make the table read only
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        // Table
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        // Center-Align column text
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        ((DefaultTableCellRenderer) table.getTableHeader().getDefaultRenderer())
+                .setHorizontalAlignment(SwingConstants.CENTER);
+        // add scroll pane to centerPanel
+        centerPanel.add(scrollPane, BorderLayout.CENTER);
+
+
+        // Right Panel
+        JPanel rightPanel = new JPanel(new BorderLayout());
+        rightPanel.setPreferredSize(new Dimension(310, 0));
+        rightPanel.setBackground(new Color(240, 248, 255));
+        rightPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        // Sort panel
+        JPanel sortPanel = new JPanel();
+        sortPanel.setLayout(new BoxLayout(sortPanel, BoxLayout.Y_AXIS));  // come back to this
+        sortPanel.setBackground(new Color(240, 248, 255));
+        sortPanel.setBorder(BorderFactory.createTitledBorder("Sort")); // come back to this
+        // Sort radio buttons
+        ButtonGroup sortGroup = new ButtonGroup();
+        JRadioButton noneButton = new JRadioButton("None", true);
+        JRadioButton ascendingNameButton = new JRadioButton("Name A-Z", false);
+        JRadioButton descendingNameButton = new JRadioButton("Name Z-A", false);
+        JRadioButton ascendingBreedButton = new JRadioButton("Breed A-Z", false);
+        JRadioButton descendingBreedButton = new JRadioButton("Breed Z-A", false);
+        JRadioButton ascendingAgeButton = new JRadioButton("Age 0-99", false);
+        JRadioButton descendingAgeButton = new JRadioButton("Age 99-0", false);
+        JRadioButton ascendingWeightButton = new JRadioButton("Weight 0-99", false);
+        JRadioButton descendingWeightButton = new JRadioButton("Weight 99-0", false);
+        JRadioButton maleButton = new JRadioButton("Male", false);
+        JRadioButton femaleButton = new JRadioButton("Female", false);
+        JRadioButton dogButton = new JRadioButton("Dog", false);
+        JRadioButton catButton = new JRadioButton("Cat", false);
+        // Add sort radio buttons to sortGroup
+        sortGroup.add(noneButton);
+        sortGroup.add(ascendingNameButton);
+        sortGroup.add(descendingNameButton);
+        sortGroup.add(ascendingBreedButton);
+        sortGroup.add(descendingBreedButton);
+        sortGroup.add(ascendingAgeButton);
+        sortGroup.add(descendingAgeButton);
+        sortGroup.add(ascendingWeightButton);
+        sortGroup.add(descendingWeightButton);
+        sortGroup.add(maleButton);
+        sortGroup.add(femaleButton);
+        sortGroup.add(dogButton);
+        sortGroup.add(catButton);
+        // 2 columns for radio buttons
+        JPanel radioPanel = new JPanel(new GridLayout(0, 2, 5, 2));
+        radioPanel.setBackground(new Color(240, 248, 255));
+
+        radioPanel.add(noneButton);
+        radioPanel.add(new JLabel()); // Empty space
+        radioPanel.add(ascendingNameButton);
+        radioPanel.add(descendingNameButton);
+        radioPanel.add(ascendingBreedButton);
+        radioPanel.add(descendingBreedButton);
+        radioPanel.add(ascendingAgeButton);
+        radioPanel.add(descendingAgeButton);
+        radioPanel.add(ascendingWeightButton);
+        radioPanel.add(descendingWeightButton);
+        radioPanel.add(maleButton);
+        radioPanel.add(femaleButton);
+        radioPanel.add(dogButton);
+        radioPanel.add(catButton);
+        // add sortPanel to radioPanel
+        sortPanel.add(radioPanel);
+        // Filter panel
+        JPanel filterPanel = new JPanel(new GridBagLayout());
+        filterPanel.setBackground(new Color(240, 248, 255));
+        filterPanel.setBorder(BorderFactory.createTitledBorder("Filters"));
+
+        // COME BACK TO THIS
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // Filter box data
+        String[] genders = {"All", "Male", "Female"};
+        String[] weight = {"All", "Toy <10", "Small 11-25", "Medium 26-50", "Large 51-100", "Giant 100+"};
+        String[] ages = {"All", "Puppy/Kitten 0-1", "Young 1-3", "Adult 4-7", "Senior 8+"};
+        String[] dogBreeds = {"All", "Labrador Retriever", "French Bulldog", "German Shepherd", "Golden Retriever", "Bulldog", "Poodle"};
+        String[] catBreeds = {"All", "Domestic Shorthair", "Domestic Longhair", "Siamese", "Persian", "Maine Coon", "Ragdoll"};
+        String[] animals = {"All", "Dog", "Cat"};
+
+        // Combo boxes
+        JComboBox genderBox = new JComboBox(genders);
+        JComboBox weightBox = new JComboBox(weight);
+        JComboBox ageBox = new JComboBox(ages);
+        JComboBox dogBreedBox = new JComboBox(dogBreeds);
+        JComboBox catBreedBox = new JComboBox(catBreeds);
+        JComboBox animalBox = new JComboBox(animals);
+
+        // Animal box
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        filterPanel.add(new JLabel("Animal"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(animalBox, gbc);
+
+        // Cat breed box
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        filterPanel.add(new JLabel("Cat Breed"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(catBreedBox, gbc);
+
+        // Dog breed box
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        filterPanel.add(new JLabel("Dog Breed"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(dogBreedBox, gbc);
+
+        // Age box
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        filterPanel.add(new JLabel("Age"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(ageBox, gbc);
+
+        // Weight box
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        filterPanel.add(new JLabel("Weight"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(weightBox, gbc);
+
+        // Gender box
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        filterPanel.add(new JLabel("Gender"), gbc);
+        gbc.gridx = 1;
+        filterPanel.add(genderBox, gbc);
+
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.weighty = 1.0;
+        filterPanel.add(Box.createVerticalGlue(), gbc);
+
+        // Add Export to JSON button
+        gbc.gridy = 7;
+        gbc.weighty = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        JButton exportButton = new JButton("Export to JSON");
+        exportButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        filterPanel.add(exportButton, gbc);
+
+        // Add action listener (empty for now, will connect to logic later)
+        exportButton.addActionListener(e -> {
+            System.out.println("Export to JSON button clicked");
+        });
+
+        // add sortPanel & filterPanel to rightPanel
+        rightPanel.add(sortPanel, BorderLayout.NORTH);
+        rightPanel.add(filterPanel, BorderLayout.CENTER);
+
+        // Add panels to frame
+        frame.add(topPanel, BorderLayout.NORTH); // add top panel to the frame
+        frame.add(centerPanel, BorderLayout.CENTER); // add center panel to frame
+        frame.add(rightPanel, BorderLayout.EAST);
+        frame.setVisible(true);
+
+    }
+}
