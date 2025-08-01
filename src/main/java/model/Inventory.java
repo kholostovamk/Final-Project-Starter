@@ -2,18 +2,15 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import java.util.Comparator;
 import model.enums.AgeGroup;
 import model.enums.WeightCategory;
 
 /**
  * Represents an inventory of pets available in the system.
- * Allows adding, removing, viewing, searching, filtering, and sorting pets.
  * Implements read-only operations defined in IReadOnlyPetList.
  */
-public class Inventory implements IReadOnlyPetList{
+public class Inventory implements IReadOnlyPetList {
 
     private final List<AbstractPet> pets;
 
@@ -24,25 +21,13 @@ public class Inventory implements IReadOnlyPetList{
         this.pets = new ArrayList<>();
     }
 
-    //methods different from interface
-
     /**
-     * Adds a pet to the inventory.
-     * @param pet the pet to be added
+     * Constructs inventory from an initial list.
+     * @param initialPets list of pets to populate inventory
      */
-    public void addPet(AbstractPet pet) {
-        pets.add(pet);
+    public Inventory(List<AbstractPet> initialPets) {
+        this.pets = new ArrayList<>(initialPets);
     }
-
-    /**
-     * Removes a pet from the inventory.
-     * @param pet the pet to be removed
-     */
-    public void removePet(AbstractPet pet) {
-        pets.remove(pet);
-    }
-    
-    // interface implemented methods
 
     /**
      * Returns a copy of all pets in the inventory.
@@ -50,10 +35,8 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> getAllPets() {
-       return new ArrayList<>(pets); //return copy, maintain immutability
+        return new ArrayList<>(pets); // return copy, maintain immutability
     }
-
-    // Searching
 
     /**
      * Searches pets by name, case-insensitively.
@@ -62,12 +45,8 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> searchByName(String name) {
-       return pets.stream().filter(p -> p.getName().equalsIgnoreCase(name))
-       .collect(Collectors.toList());
+        return PetListUtils.searchByName(pets, name);
     }
-
-
-    // Filtering 
 
     /**
      * Filters pets by age group. Uses different logic for Dogs and Cats.
@@ -76,13 +55,7 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> filterByAgeGroup(AgeGroup group) {
-       return pets.stream()
-              .filter(p -> {
-                if (p instanceof Dog d ) return AgeGroup.fromDogAge(d.getAge()) == group;
-                else if (p instanceof Cat c) return AgeGroup.fromCatAge(c.getAge()) == group;
-                else return false;
-              })
-              .collect(Collectors.toList());
+        return PetListUtils.filterByAgeGroup(pets, group);
     }
 
     /**
@@ -92,15 +65,7 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> filterByWeightCategory(WeightCategory category) {
-        return pets.stream()
-               .filter(p -> {
-                if (p instanceof Dog d) return WeightCategory.fromDogWeight(d.getWeight()) 
-                == category;
-                else if (p instanceof Cat c) return WeightCategory.fromCatWeight(c.getWeight())
-                == category;
-                else return false;
-               })
-               .collect(Collectors.toList());
+        return PetListUtils.filterByWeightCategory(pets, category);
     }
 
     /**
@@ -110,8 +75,7 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> filterByGender(char gender) {
-        return pets.stream().filter(p->p.getGender() == gender)
-        .collect(Collectors.toList());
+        return PetListUtils.filterByGender(pets, gender);
     }
 
     /**
@@ -121,12 +85,8 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> filterByBreed(String breed) {
-        return pets.stream().filter(p->p.getBreed().equalsIgnoreCase(breed)).
-        collect(Collectors.toList());
+        return PetListUtils.filterByBreed(pets, breed);
     }
-
-
-    // Sorting 
 
     /**
      * Returns pets sorted by name.
@@ -134,9 +94,7 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> getPetsSortedByName() {
-        return pets.stream()
-                    .sorted(Comparator.comparing(AbstractPet::getName))
-                    .collect(Collectors.toList());
+        return PetListUtils.getPetsSortedByName(pets);
     }
 
     /**
@@ -145,9 +103,7 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> getPetsSortedByAge() {
-        return pets.stream()
-                    .sorted(Comparator.comparing(AbstractPet::getAge))
-                    .collect(Collectors.toList());
+        return PetListUtils.getPetsSortedByAge(pets);
     }
 
     /**
@@ -156,9 +112,6 @@ public class Inventory implements IReadOnlyPetList{
      */
     @Override
     public List<AbstractPet> getPetsSortedByWeight() {
-        return pets.stream()
-                    .sorted(Comparator.comparing(AbstractPet::getWeight))
-                    .collect(Collectors.toList());
+        return PetListUtils.getPetsSortedByWeight(pets);
     }
-    
 }
