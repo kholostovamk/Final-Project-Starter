@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.github.javaparser:javaparser-symbol-solver-core:3.25.3'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation 'com.opencsv:opencsv:5.8'
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
     // Jackson Core
     implementation 'com.fasterxml.jackson.core:jackson-core:2.16.0'
     // Jackson Annotations
@@ -39,6 +40,8 @@ dependencies {
     implementation 'com.fasterxml.woodstox:woodstox-core:6.5.0'
     // jackson dataformat csv
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.13.0'
+    
+    
    
 }
 

@@ -1,3 +1,4 @@
+package model;
 // import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 // import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 // import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -37,17 +38,19 @@ public interface FileInterface {
 
     /**
      * The record to pass around between objects. Is immutable and uses Jackson annotations for serialization.
+     * @param animal 
      * @param id
      * @param name
      * @param age
      * @param breed
      * @param weight
      * @param gender
+     * @param specialInfo
      */
     // @JsonIgnoreProperties(ignoreUnknown = true)
     // @JacksonXmlRootElement(localName = "pet")
-    // @JsonPropertyOrder({"id", "name", "age", "breed", "weight", "gender"})
-    record PetRecord(String id, String name, int age, String breed, double weight, char gender) {
+    // @JsonPropertyOrder({"animal,"id", "name", "age", "breed", "weight", "gender", "specialInfo"})
+    record PetRecord(String animal, String id, String name, int age, String breed, double weight, char gender, boolean specialInfo) {
     }
 
 }
