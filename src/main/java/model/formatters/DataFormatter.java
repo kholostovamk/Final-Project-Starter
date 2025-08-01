@@ -59,6 +59,8 @@ public class DataFormatter {
 
     }
 
+
+
     /**
      * Write the data as XML.
      *
@@ -69,7 +71,7 @@ public class DataFormatter {
         try {
             XmlMapper mapper = new XmlMapper();
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            petXmlWrapper wrapper = new petXmlWrapper(records);
+            PetXmlWrapper wrapper = new PetXmlWrapper(records);
             mapper.writeValue(out, wrapper);
         } catch (Exception e) {
             e.printStackTrace();

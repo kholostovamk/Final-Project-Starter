@@ -11,6 +11,7 @@ import java.util.List;
 
 import model.formatters.Formats;
 
+
 public interface FileInterface {
 
     /** Do not change the file address! */
@@ -48,6 +49,7 @@ public interface FileInterface {
      * @param weight
      * @param gender
      * @param specialInfo
+     * @return Return the record
      */
     // @JsonIgnoreProperties(ignoreUnknown = true)
     // @JacksonXmlRootElement(localName = "pet")

@@ -8,7 +8,7 @@ import model.FileInterface;
 
 
 /**
- * This wrapper helps when using Jackson to serialize a list of domain records to xml. Without this,
+ * This wrapper helps when using Jackson to serialize a list of pet records to xml. Without this,
  * it tries to use <ArrayList> and <item> tags instead of <petList> and <pet> tags
  */
 @JacksonXmlRootElement(localName = "petList")
@@ -26,6 +26,7 @@ public final class PetXmlWrapper {
         // Needed for Jackson
     }
 
+
     /**
      * Constructor.
      * @param records the records to wrap
@@ -35,9 +36,9 @@ public final class PetXmlWrapper {
     }
 
     /**
-     * Get domain from collections of DNRecord.
+     * Get Pet from collections of PetRecord.
      *
-     * @return Collection of DNRecord of its Domain.
+     * @return Collection of PetRecord of its Pet.
      */
     public Collection<FileInterface.PetRecord> getPet() {
         return pet;
@@ -45,10 +46,10 @@ public final class PetXmlWrapper {
 
 
     /**
-     * Set each DNRecord of Domain.
+     * Set each PetRecord of Pet.
      * @param pet
      */
-    public void setDomain(Collection<FileInterface.PetRecord> pet) {
+    public void setPet(Collection<FileInterface.PetRecord> pet) {
         this.pet = pet;
     }
 
