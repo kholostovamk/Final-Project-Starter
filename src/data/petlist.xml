@@ -1,0 +1,62 @@
+<petslist>
+  <pet>
+    <animal>Cat</animal>
+    <id>1</id>
+    <name>Luna</name>
+    <age>2</age>
+    <breed>Siamese</breed>
+    <weight>8.5</weight>
+    <gender>Female</gender>
+    <isIndoorOnly>true</isIndoorOnly>
+  </pet>
+  <pet>
+    <animal>Dog</animal>
+    <id>2</id>
+    <name>Max</name>
+    <age>4</age>
+    <breed>Labrador Retriever</breed>
+    <weight>65.2</weight>
+    <gender>Male</gender>
+    <isTrained>true</isTrained>
+  </pet>
+  <pet>
+    <animal>Cat</animal>
+    <id>3</id>
+    <name>Milo</name>
+    <age>3</age>
+    <breed>Maine Coon</breed>
+    <weight>12.4</weight>
+    <gender>Male</gender>
+    <isIndoorOnly>false</isIndoorOnly>
+  </pet>
+  <pet>
+    <animal>Dog</animal>
+    <id>4</id>
+    <name>Daisy</name>
+    <age>5</age>
+    <breed>Beagle</breed>
+    <weight>22.7</weight>
+    <gender>Female</gender>
+    <isTrained>false</isTrained>
+  </pet>
+  <pet>
+    <animal>Cat</animal>
+    <id>5</id>
+    <name>Chloe</name>
+    <age>1</age>
+    <breed>British Shorthair</breed>
+    <weight>9.1</weight>
+    <gender>Female</gender>
+    <isIndoorOnly>true</isIndoorOnly>
+  </pet>
+  <pet>
+    <animal>Dog</animal>
+    <id>6</id>
+    <name>Charlie</name>
+    <age>6</age>
+    <breed>Golden Retriever</breed>
+    <weight>70.3</weight>
+    <gender>Male</gender>
+    <isTrained>true</isTrained>
+  </pet>
+</petslist>
