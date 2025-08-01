@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import model.formatters.Formats;
+
 public interface FileInterface {
 
     /** Do not change the file address! */
