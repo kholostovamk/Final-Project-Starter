@@ -49,7 +49,7 @@ public interface FileInterface {
      * @param weight
      * @param gender
      * @param specialInfo
-     * @return Return the record
+     * @return return the record
      */
     // @JsonIgnoreProperties(ignoreUnknown = true)
     // @JacksonXmlRootElement(localName = "pet")
