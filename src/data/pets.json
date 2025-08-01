@@ -1,0 +1,64 @@
+{
+    "pets": [
+      {
+        "animal": "Cat",
+        "id": 1,
+        "name": "Luna",
+        "age": 2,
+        "breed": "Siamese",
+        "weight": 8.5,
+        "gender": "Female",
+        "isIndoorOnly": true
+      },
+      {
+        "animal": "Dog",
+        "id": 2,
+        "name": "Max",
+        "age": 4,
+        "breed": "Labrador Retriever",
+        "weight": 65.2,
+        "gender": "Male",
+        "isTrained": true
+      },
+      {
+        "animal": "Cat",
+        "id": 3,
+        "name": "Milo",
+        "age": 3,
+        "breed": "Maine Coon",
+        "weight": 12.4,
+        "gender": "Male",
+        "isIndoorOnly": false
+      },
+      {
+        "animal": "Dog",
+        "id": 4,
+        "name": "Daisy",
+        "age": 5,
+        "breed": "Beagle",
+        "weight": 22.7,
+        "gender": "Female",
+        "isTrained": false
+      },
+      {
+        "animal": "Cat",
+        "id": 5,
+        "name": "Chloe",
+        "age": 1,
+        "breed": "British Shorthair",
+        "weight": 9.1,
+        "gender": "Female",
+        "isIndoorOnly": true
+      },
+      {
+        "animal": "Dog",
+        "id": 6,
+        "name": "Charlie",
+        "age": 6,
+        "breed": "Golden Retriever",
+        "weight": 70.3,
+        "gender": "Male",
+        "isTrained": true
+      }
+    ]
+  }
