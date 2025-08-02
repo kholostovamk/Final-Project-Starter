@@ -12,6 +12,13 @@ import model.formatters.PetXmlWrapper;
 import model.formatters.DataFormatter;
 import model.formatters.Formats;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+
 public class File implements FileInterface {
     String DATAPATH = "data/petslist.xml";
     private final File xmlFile;
