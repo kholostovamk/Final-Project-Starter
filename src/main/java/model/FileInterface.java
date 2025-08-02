@@ -13,9 +13,6 @@ import java.util.List;
 
 public interface FileInterface {
 
-    /** Do not change the file address! */
-    String DATAPATH = "data/petslist.xml";
-
     /**
      * Get the pet records from the file.
      * @return The list of records
